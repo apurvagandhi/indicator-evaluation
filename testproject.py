@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 import TheoreticallyOptimalStrategy as tos
 import pandas as pd
 from marketsimcode import compute_portvals
+import indicators
 
 def author():
     """
@@ -31,9 +32,9 @@ def test_code():
     trades_portfolio_value = compute_portvals(df_trades, 100000, 0.0, 0.0)
     cumulative_return, stdev_daily_return, average_daily_return = tos.get_statistics(trades_portfolio_value)
     trades_portfolio_value = trades_portfolio_value / trades_portfolio_value[0]
-    print("cumulative_return", cumulative_return)
-    print("stdev_daily_return" ,stdev_daily_return)
-    print("average_daily_return", average_daily_return)
+    print("trades cumulative_return", cumulative_return)
+    print("trades tdev_daily_return" ,stdev_daily_return)
+    print("trades average_daily_return", average_daily_return)
     # print(trades_portfolio_value)
 
 
@@ -42,9 +43,9 @@ def test_code():
     benchMark_portfolio_value = compute_portvals(df_benchmark, 100000, 0, 0)
     cumulative_return, stdev_daily_return, average_daily_return = tos.get_statistics(benchMark_portfolio_value)
     benchMark_portfolio_value = benchMark_portfolio_value / benchMark_portfolio_value[0]
-    print("cumulative_return", cumulative_return)
-    print("stdev_daily_return" ,stdev_daily_return)
-    print("average_daily_return", average_daily_return)
+    print("\nbenchmark cumulative_return", cumulative_return)
+    print("benchmark stdev_daily_return" ,stdev_daily_return)
+    print("benchmark average_daily_return", average_daily_return)
     # print(benchMark_portfolio_value)
     
     plt.figure(figsize=(10, 5))
@@ -64,3 +65,4 @@ if __name__ == "__main__":
     pd.set_option('display.max_rows', None)  # Display all rows
     pd.set_option('display.max_columns', None)  # Display all columns
     test_code()
+    indicators.test_code()
